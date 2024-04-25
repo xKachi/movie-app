@@ -3,11 +3,11 @@ import { getMovie } from "../../api";
 import Movie from "../../components/Movie";
 
 export const Route = createFileRoute("/movies/$movieId")({
-  component: DetailRoute,
+  component: MovieDetail,
   loader: ({ params: { movieId } }) => getMovie(movieId),
 });
 
-function DetailRoute() {
+function MovieDetail() {
   const movie = Route.useLoaderData();
   return <Movie movie={movie} />;
 }

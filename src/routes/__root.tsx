@@ -1,7 +1,6 @@
 import { createRootRoute, Outlet, Link } from "@tanstack/react-router";
 
 export const Route = createRootRoute({
-  //component: () => <Outlet />,
   component: LayoutComponent,
 });
 
@@ -11,7 +10,7 @@ function LayoutComponent() {
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Real App</title>
+        <title>Movie-App</title>
       </head>
       <body className="bg-black max-w-4xl mx-auto text-white px-5 md:px-0">
         <header className="flex justify-between items-center p-4 bg-[#780909] text-white rounded-b-2xl shadow-xl shadow-[#df0707] mb-6">

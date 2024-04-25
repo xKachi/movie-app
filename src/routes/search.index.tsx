@@ -14,10 +14,12 @@ export const Route = createFileRoute("/search/")({
   component: SearchRoute,
   loaderDeps: ({ search: { query } }) => ({ query }),
   loader: async ({ deps: { query } }) => {
-    const movies = await searchMovie(query);
+    const searched_movies = await searchMovie(query);
     return {
-      movies,
-      firstMovie: movies?.[0]?.id ? defer(getMovie(movies[0].id)) : null,
+      searched_movies,
+      firstMovie: searched_movies?.[0]?.id
+        ? defer(getMovie(searched_movies[0].id))
+        : null,
     };
   },
   validateSearch: (search: { query: string }): SearchParams => {
@@ -28,8 +30,8 @@ export const Route = createFileRoute("/search/")({
 });
 
 function SearchRoute() {
-  const { movies, firstMovie } = Route.useLoaderData();
-  console.log(movies);
+  const { searched_movies, firstMovie } = Route.useLoaderData();
+  console.log(searched_movies);
 
   return (
     <>
@@ -44,7 +46,7 @@ function SearchRoute() {
           </Suspense>
         </div>
       )}
-      <MovieCards movies={movies || []} />
+      <MovieCards movies={searched_movies || []} />
     </>
   );
 }

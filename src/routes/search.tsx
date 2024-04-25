@@ -17,6 +17,8 @@ export const Route = createFileRoute("/search")({
 function SearchRoute() {
   const { query } = Route.useSearch();
   const navigate = useNavigate({ from: Route.id });
+  console.log(Route.id);
+  console.log(navigate);
   const [newQuery, setNewQuery] = useState(query);
 
   return (

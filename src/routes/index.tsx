@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import Paging from "../components/Paging";
 import { getMovies } from "../api";
 import { z } from "zod";
 
@@ -20,26 +21,7 @@ function IndexComponent() {
   return (
     <div>
       <div className="flex justify-end pr-5 py-5">
-        <div className="flex gap-1 text-xl font-bold justify-end">
-          {new Array(pages).fill(0).map((_, i) =>
-            page === i + 1 ? (
-              <div className="px-4 py-2 border border-red-300 rounded bg-[#0b0000] text-white">
-                {i + 1}
-              </div>
-            ) : (
-              <Link
-                key={i}
-                from={Route.id}
-                search={{
-                  page: i + 1,
-                }}
-                className="px-4 py-2 border border-red-300 rounded hover:bg-[#a33d3da1]"
-              >
-                {i + 1}
-              </Link>
-            )
-          )}
-        </div>
+        <Paging page={page} pages={pages} Route={Route} />
       </div>
       <MovieCards movies={movies} />
     </div>
